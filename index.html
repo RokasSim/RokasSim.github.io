@@ -130,8 +130,8 @@
                   <img src="assets/img/profile/profile-square-3.webp" class="img-fluid" alt="Profile avatar">
                   <div class="status-indicator"></div>
                 </div>
-                <h3>Jordan Mitchell</h3>
-                <span class="role">Full Stack Developer</span>
+                <h3>Rokas Šimėnas</h3>
+                <span class="role">Student</span>
                 <div class="rating">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -193,7 +193,7 @@
                   <i class="bi bi-mortarboard"></i>
                   <div class="detail-content">
                     <span>Degree</span>
-                    <strong>Master of Science</strong>
+                    <strong>Information system engineering bachelor</strong>
                   </div>
                 </div>
 
@@ -634,7 +634,7 @@
           <div class="row gy-4">
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
               <h4>Local Video (Pexels)</h4>
-              <video controls>
+              <video controls class="responsive-video" preload="metadata">
                 <source src="assets/media/7534244-hd_1920_1080_25fps.mp4" type="video/mp4">
                 Your browser does not support the video tag. <a href="https://www.pexels.com/video/person-is-typing-using-computer-keyboard-7534244/">Watch on Pexels</a>
               </video>
@@ -651,8 +651,7 @@
 
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
               <h4>Local Audio (Pixabay)</h4>
-              <audio controls>
-                <source src="assets/media/quartz-clock-ticking-one-minute-253102.mp3" type="audio/mpeg">
+              <audio controls class="responsive-audio" src="assets/media/quartz-clock-ticking-one-minute-253102.mp3" preload="metadata">
                 Your browser does not support the audio element. <a href="https://pixabay.com/sound-effects/quartz-clock-ticking-one-minute-253102/">Listen on Pixabay</a>
               </audio>
               <p class="small mt-2">Local file: <code>assets/media/quartz-clock-ticking-one-minute-253102.mp3</code></p>
@@ -948,8 +947,18 @@
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+  <!-- Preloader (CSS-only decorative element) -->
+  <div id="preloader" class="page-preloader decorative" aria-hidden="true">
+    <div class="spinner" aria-hidden="true">
+      <div></div>
+      <div></div>
+    </div>
+    <div class="pulsing-dots" aria-hidden="true">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
