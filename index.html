@@ -841,31 +841,68 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form">
+            <form class="php-email-form">
               <div class="row gy-4">
 
+                <!-- Vardas (First Name) -->
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  <input type="text" name="vardas" class="form-control" placeholder="Vardas (First Name)" required>
                 </div>
 
+                <!-- Pavardė (Last Name) -->
                 <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                  <input type="text" name="pavarde" class="form-control" placeholder="Pavardė (Last Name)" required>
                 </div>
 
+                <!-- El. paštas (Email) -->
+                <div class="col-md-6">
+                  <input type="email" class="form-control" name="email" placeholder="El. paštas (Email)" required>
+                </div>
+
+                <!-- Telefono numeris (Phone) -->
+                <div class="col-md-6">
+                  <input type="tel" class="form-control" name="phone" placeholder="Telefono numeris (Phone)" required>
+                </div>
+
+                <!-- Adresas (Address) -->
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                  <input type="text" class="form-control" name="address" placeholder="Adresas (Address)" required>
                 </div>
 
+                <!-- Rating Question 1 -->
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  <label for="rating1" class="form-label">1. Kaip jūs vertinate mūsų paslaugą? (1-10)</label>
+                  <div class="rating-group">
+                    <input type="range" id="rating1" name="rating1" class="form-range" min="1" max="10" value="5">
+                    <span class="slider-value" id="rating1-value">5</span>
+                  </div>
                 </div>
 
+                <!-- Rating Question 2 -->
+                <div class="col-md-12">
+                  <label for="rating2" class="form-label">2. Kaip jūs vertinate mūsų greitį ir efektyvumą? (1-10)</label>
+                  <div class="rating-group">
+                    <input type="range" id="rating2" name="rating2" class="form-range" min="1" max="10" value="5">
+                    <span class="slider-value" id="rating2-value">5</span>
+                  </div>
+                </div>
+
+                <!-- Rating Question 3 -->
+                <div class="col-md-12">
+                  <label for="rating3" class="form-label">3. Ar rekomenduotumėte mus draugams? (1-10)</label>
+                  <div class="rating-group">
+                    <input type="range" id="rating3" name="rating3" class="form-range" min="1" max="10" value="5">
+                    <span class="slider-value" id="rating3-value">5</span>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
                 <div class="col-md-12 text-center">
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
 
-                  <button type="submit">Send Message</button>
+                  <button type="submit">Submit</button>
                 </div>
 
               </div>
@@ -973,6 +1010,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/custom.js"></script>
 
 </body>
 
