@@ -851,26 +851,318 @@ audio { -webkit-appearance: audio; appearance: auto; }
 /* =====================
 	 Memory Game styles
 	 ===================== */
-.memory-game .game-controls { align-items: center; }
-.game-board-container { background: rgba(255,255,255,0.03); padding: 1rem; border-radius: .5rem; }
-.game-board { display: grid; gap: 12px; justify-content: center; align-content: start; }
-.game-board.easy { grid-template-columns: repeat(4, minmax(80px, 1fr)); }
-.game-board.hard { grid-template-columns: repeat(6, minmax(64px, 1fr)); }
-.game-card { perspective: 900px; }
-.card-inner { position: relative; width: 100%; padding-top: 100%; /* square */ transform-style: preserve-3d; transition: transform .45s cubic-bezier(.2,.9,.25,1); }
-.card-inner.flipped { transform: rotateY(180deg); }
-.card-face { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border-radius: .5rem; backface-visibility: hidden; font-size: 1.6rem; }
-.card-front { background: linear-gradient(180deg,#ffffff,#f1f5f9); color: #0b3b5a; border: 1px solid rgba(15,23,35,0.06); }
-.card-back { background: var(--primary); color: white; transform: rotateY(180deg); }
-.card-disabled { opacity: .5; pointer-events: none; }
-.game-stats { background: rgba(255,255,255,0.02); border-radius: .5rem; }
-.win-message { font-weight: 700; color: var(--success); }
-
-@media (max-width: 768px) {
-	.game-board.easy { grid-template-columns: repeat(3, minmax(80px, 1fr)); }
-	.game-board.hard { grid-template-columns: repeat(4, minmax(64px, 1fr)); }
+.memory-game {
+	background: #000000;
+	padding: 3.5rem 0;
 }
 
+.memory-game-wrapper {
+	margin-top: 2rem;
+}
+
+/* Game Controls: Difficulty & Buttons */
+.game-controls {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2rem;
+	margin-bottom: 2.5rem;
+	padding: 1.5rem;
+	background: rgba(255, 255, 255, 0.04);
+	border-radius: 0.75rem;
+	border: 1px solid rgba(17, 82, 147, 0.08);
+}
+
+.difficulty-selector {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.difficulty-selector label {
+	font-weight: 700;
+	color: var(--text);
+	margin: 0;
+}
+
+.difficulty-options {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.difficulty-btn {
+	padding: 0.6rem 1.2rem;
+	border: 2px solid rgba(17, 82, 147, 0.3);
+	background: transparent;
+	color: var(--text);
+	border-radius: 0.5rem;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 0.9rem;
+	transition: all 0.3s ease;
+}
+
+.difficulty-btn:hover {
+	border-color: var(--primary);
+	background: rgba(17, 82, 147, 0.08);
+}
+
+.difficulty-btn.active {
+	background: var(--primary);
+	color: #ffffff;
+	border-color: var(--primary);
+}
+
+.game-buttons {
+	display: flex;
+	gap: 1rem;
+}
+
+.btn-start, .btn-reset {
+	padding: 0.65rem 1.5rem;
+	background: var(--primary);
+	color: #ffffff;
+	border: none;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 0.95rem;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 12px rgba(17, 82, 147, 0.2);
+}
+
+.btn-start:hover, .btn-reset:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(17, 82, 147, 0.3);
+	background: #0d3f5a;
+}
+
+.btn-start:active, .btn-reset:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 8px rgba(17, 82, 147, 0.2);
+}
+
+/* Game Board Container */
+.game-board-container {
+	background: rgba(255, 255, 255, 0.04);
+	padding: 2rem 1.5rem;
+	border-radius: 0.75rem;
+	border: 1px solid rgba(17, 82, 147, 0.08);
+	margin-bottom: 2rem;
+	min-height: 320px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Game Board Grid */
+.game-board {
+	display: grid;
+	gap: 1rem;
+	justify-content: center;
+	align-content: start;
+	width: 100%;
+	max-width: 650px;
+}
+
+.game-board.easy {
+	grid-template-columns: repeat(4, minmax(90px, 1fr));
+}
+
+.game-board.hard {
+	grid-template-columns: repeat(6, minmax(70px, 1fr));
+}
+
+/* Individual Card */
+.game-card {
+	perspective: 1000px;
+	cursor: pointer;
+	height: 0;
+	padding-bottom: 100%;
+	position: relative;
+}
+
+.card-inner {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-inner.flipped {
+	transform: rotateY(180deg);
+}
+
+.card-face {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.6rem;
+	backface-visibility: hidden;
+	font-size: 2.5rem;
+	font-weight: 700;
+	user-select: none;
+}
+
+.card-front {
+	background: linear-gradient(135deg, #115293, #0d3f5a);
+	color: #ffffff;
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card-front::before {
+	content: '?';
+	font-size: 2.2rem;
+	color: #ffffff;
+}
+
+.card-back {
+	background: linear-gradient(135deg, #f1f5f9, #e0e7ff);
+	color: #0b3b5a;
+	border: 2px solid rgba(17, 82, 147, 0.2);
+	transform: rotateY(180deg);
+}
+
+.card-disabled {
+	opacity: 0.7;
+	pointer-events: none;
+}
+
+.game-card:not(.card-disabled) .card-inner:not(.flipped):hover {
+	filter: brightness(1.1);
+}
+
+/* Stats Panel */
+.game-stats {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 3rem;
+	margin-bottom: 2rem;
+	padding: 1.5rem;
+	background: rgba(255, 255, 255, 0.04);
+	border-radius: 0.75rem;
+	border: 1px solid rgba(17, 82, 147, 0.08);
+}
+
+.stat-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	flex: 0 1 auto;
+	min-width: 100px;
+}
+
+.stat-label {
+	font-size: 0.9rem;
+	color: var(--muted);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.stat-value {
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--primary);
+}
+
+/* Win Message */
+.game-win-message {
+	background: linear-gradient(135deg, rgba(14, 165, 164, 0.1), rgba(14, 165, 164, 0.05));
+	border: 2px solid rgba(14, 165, 164, 0.3);
+	border-radius: 0.75rem;
+	padding: 2rem;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.game-win-message h3 {
+	color: var(--success);
+	font-size: 2rem;
+	margin-bottom: 0.75rem;
+	font-weight: 800;
+}
+
+.game-win-message p {
+	color: var(--text);
+	font-size: 1rem;
+	margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+	.game-controls {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 1.5rem;
+	}
+
+	.difficulty-selector {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.game-buttons {
+		width: 100%;
+	}
+
+	.btn-start, .btn-reset {
+		flex: 1;
+	}
+
+	.game-board.easy {
+		grid-template-columns: repeat(3, minmax(80px, 1fr));
+	}
+
+	.game-board.hard {
+		grid-template-columns: repeat(4, minmax(70px, 1fr));
+	}
+
+	.game-stats {
+		gap: 2rem;
+		flex-direction: column;
+	}
+
+	.card-face {
+		font-size: 1.8rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.game-board.easy {
+		grid-template-columns: repeat(3, minmax(70px, 1fr));
+	}
+
+	.game-board.hard {
+		grid-template-columns: repeat(3, minmax(70px, 1fr));
+	}
+
+	.card-face {
+		font-size: 1.4rem;
+	}
+
+	.stat-value {
+		font-size: 1.5rem;
+	}
+}
+
+/* Accessibility: Reduce Motion */
 @media (prefers-reduced-motion: reduce) {
-	.card-inner { transition: none !important; }
+	.card-inner {
+		transition: none !important;
+	}
+
+	.btn-start:hover, .btn-reset:hover {
+		transform: none;
+	}
 }

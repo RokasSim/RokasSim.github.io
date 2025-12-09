@@ -915,6 +915,67 @@
 
     </section><!-- /Contact Section -->
 
+    <!-- Memory Game Section -->
+    <section id="memory-game" class="section memory-game">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Mano Žaidimas</h2>
+          <p>Atlaiskite kortelės ir suraskite visas poras!</p>
+        </div>
+
+        <div class="memory-game-wrapper">
+          <!-- Difficulty Level Selection -->
+          <div class="game-controls">
+            <div class="difficulty-selector">
+              <label>Sunkumas:</label>
+              <div class="difficulty-options">
+                <button class="difficulty-btn easy-btn active" data-difficulty="easy">Lengvas (4×3)</button>
+                <button class="difficulty-btn hard-btn" data-difficulty="hard">Sunkus (6×4)</button>
+              </div>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="game-buttons">
+              <button class="btn-start" id="game-start-btn">Start</button>
+              <button class="btn-reset" id="game-reset-btn">Atnaujinti</button>
+            </div>
+          </div>
+
+          <!-- Game Board Container -->
+          <div class="game-board-container">
+            <div class="game-board" id="game-board"></div>
+          </div>
+
+          <!-- Stats Panel -->
+          <div class="game-stats">
+            <div class="stat-item">
+              <span class="stat-label">Laikas:</span>
+              <span class="stat-value" id="timer-display">0:00</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Ėjimai:</span>
+              <span class="stat-value" id="moves-count">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Sutapusios poros:</span>
+              <span class="stat-value" id="matched-pairs-count">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Geriausias:</span>
+              <span class="stat-value" id="best-moves-count">—</span>
+            </div>
+          </div>
+
+          <!-- Win Message -->
+          <div class="game-win-message" id="game-win-message" style="display: none;">
+            <h3>Laimėjote!</h3>
+            <p id="final-stats"></p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- /Memory Game Section -->
+
   </main>
 
   <footer id="footer" class="footer">
