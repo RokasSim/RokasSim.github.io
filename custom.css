@@ -1,0 +1,612 @@
+/* Custom typography and component styles for Craftivo - updated */
+/* Fonts: import chosen Google fonts (headings + body). If offline, fallbacks apply. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+	/* Font stacks */
+	--font-heading: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	--font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+	/* Color system (high contrast) */
+	--bg: #ffffff;
+	--surface: #f8fafc; /* light surface */
+	--text: #424141; /* near-black for best legibility */
+	--muted: #6b7280;
+	--primary: #115293; /* deep blue */
+	--accent: #ff6b35;  /* warm accent */
+	--success: #0ea5a4;
+}
+
+html, body {
+	font-family: var(--font-body);
+	color: var(--text);
+	background: var(--bg);
+	font-size: 16px;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Paragraphs */
+p {
+	font-size: 1rem; /* 16px */
+	color: var(--muted);
+	margin: 0 0 1rem 0;
+	letter-spacing: 0.01em;
+}
+
+/* Headings - visually distinct from base template */
+h1,h2,h3,h4,h5,h6 {
+	font-family: var(--font-heading);
+	color: var(--text);
+	margin: 0 0 0.6rem 0;
+}
+
+h1 {
+	font-size: 3rem; /* 48px */
+	color: var(--primary);
+	font-weight: 800;
+	line-height: 1.02;
+	letter-spacing: -0.02em;
+}
+
+h2 {
+	font-size: 2rem; /* 32px */
+	color: #0d3f5a; /* slightly darker primary */
+	font-weight: 700;
+	line-height: 1.08;
+	letter-spacing: -0.01em;
+}
+
+h3 {
+	font-size: 1.5rem; /* 24px */
+	color: var(--text);
+	font-weight: 700;
+	line-height: 1.12;
+}
+
+h4 {
+	font-size: 1.125rem; /* 18px */
+	font-weight: 600;
+	color: var(--text);
+}
+
+h5 { font-size: 1rem; font-weight: 600; color: var(--text); }
+h6 { font-size: 0.875rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.lead { font-size: 1.125rem; color: var(--text); font-weight: 500; margin-bottom: 1.25rem; }
+
+/* Links */
+a { color: var(--primary); text-decoration: none; transition: all .18s ease-in-out; }
+a:hover, a:focus { color: var(--accent); text-decoration: underline; outline: none; }
+
+/* Buttons -- visual refresh and accessible contrast */
+.btn, button, .btn-primary, .btn-secondary, .btn-accent, .btn-getstarted, .cta-btn {
+	display: inline-flex; align-items: center; justify-content: center;
+	gap: .5rem;
+	padding: 0.6rem 1rem;
+	border-radius: 0.5rem;
+	font-weight: 600;
+	cursor: pointer;
+	border: 0;
+	text-decoration: none;
+}
+
+.btn-primary, .btn-getstarted, .btn-accent { background: linear-gradient(180deg,var(--primary), #0b456c); color: #ec7a96; box-shadow: 0 6px 18px rgba(209, 38, 152, 0.281); }
+.btn-primary:hover, .btn-getstarted:hover, .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgb(218, 75, 75); background: linear-gradient(180deg,#0b456c, var(--primary)); }
+.btn-primary:active, .btn-getstarted:active { transform: translateY(0); box-shadow: 0 4px 12px rgba(185, 123, 123, 0.836); }
+
+.btn-secondary, .btn-secondary a { background: #da3286; color: var(--text); border: 1px solid rgba(138, 170, 218, 0.986); }
+.btn-secondary:hover { background: #e9eef6; }
+
+/* CTA button style used in portfolio bottom */
+.cta-btn { background: var(--accent); color: #f1b46d; border-radius: .6rem; padding: .65rem 1.15rem; }
+.cta-btn:hover { background: #e65b20; }
+
+/* Navbar visual refresh (component 1) */
+#header.header {
+	background: rgba(255, 68, 68, 0.274); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(75, 8, 71, 0.562);
+}
+#header .container-xl { padding: 0.6rem 1rem; }
+#header .logo .sitename { font-family: var(--font-heading); font-weight: 700; color: var(--primary); letter-spacing: .02em; }
+#header .navmenu ul li a { color: var(--text); padding: .5rem .6rem; border-radius: .35rem; }
+#header .navmenu ul li a:hover, #header .navmenu ul li a.active { background: var(--surface); color: var(--primary); }
+
+/* ===== SERVICES TABLE STYLES ===== */
+.services-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 1.25rem;
+	background-color: transparent;
+}
+
+.services-table th,
+.services-table td {
+	padding: 0.9rem 1.1rem;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.services-table thead th {
+	background: linear-gradient(90deg, #000000 0%, #8b0000 100%);
+	color: #ffffff;
+	font-weight: 700;
+	font-size: 1rem;
+	letter-spacing: 0.6px;
+}
+
+.services-table tbody tr:nth-child(odd) {
+	background-color: #1a0b0b; /* dark red */
+}
+
+.services-table tbody tr:nth-child(even) {
+	background-color: #0b0b0b; /* near-black */
+}
+
+.services-table tbody tr:hover {
+	background-color: #b91c1c; /* vivid red */
+	transform: translateY(-1px);
+}
+
+.services-table td {
+	color: #000000;
+	font-weight: 500;
+}
+
+.services-table td:last-child {
+	font-weight: 700;
+	color: #000000;
+}
+/* Improve dropdown submenu readability */
+#header .navmenu .dropdown > a { display: inline-flex; align-items: center; gap: .35rem; }
+#header .navmenu .dropdown:hover > a, #header .navmenu .dropdown:focus-within > a { background: var(--surface); color: var(--primary); }
+#header .navmenu .dropdown ul {
+	background: #ffffff; /* ensure light background for submenu */
+	color: var(--text);
+	border-radius: .5rem;
+	padding: .35rem 0;
+	box-shadow: 0 10px 30px rgba(15,23,35,0.08);
+	min-width: 220px;
+}
+#header .navmenu .dropdown ul li a { color: var(--text); display: block; padding: .45rem .9rem; border-radius: .35rem; }
+#header .navmenu .dropdown ul li a:hover { background: rgba(17,82,147,0.06); color: var(--primary); }
+
+/* Back-to-top button visual refresh (component 2) */
+#scroll-top.scroll-top {
+	width: 48px; height: 48px; border-radius: 999px; background: var(--primary); color: #87c2cc;
+	box-shadow: 0 8px 22px rgba(17,82,147,0.18); right: 20px; bottom: 24px; z-index: 999;
+}
+#scroll-top.scroll-top:hover { transform: translateY(-4px); background: #4c1453d5; }
+
+/* Progress bars (visual only) */
+.progress { height: 12px; background: #475766; border-radius: 999px; overflow: hidden; }
+.progress .progress-bar { background: linear-gradient(90deg,var(--accent), var(--primary)); border-radius: 999px; }
+
+/* Section spacing and block visuals */
+.section { padding: 3.25rem 0; }
+.section .container { padding-left: 1rem; padding-right: 1rem; }
+
+/* Consistent card styles for About / Resume / Portfolio blocks */
+.profile-card, .content-wrapper .bio-section, .exp-card, .portfolio-card, .service-item, .info-item, .experience-section .experience-cards .exp-card {
+	background: #2c2a2c;
+	border: 1px solid rgba(15,23,35,0.04);
+	border-radius: 0.75rem;
+	padding: 1.15rem;
+	box-shadow: 0 8px 20px rgba(44, 19, 51, 0.473);
+	margin-bottom: 1rem;
+}
+
+/* Make grid items consistent spacing */
+#about .container .row > [class*="col-"], #resume .container .row > [class*="col-"], #portfolio .container .row > [class*="col-"] {
+	margin-bottom: 1.25rem;
+}
+
+/* Details grid and small meta styles */
+.details-grid .detail-item { background: var(--surface); padding: .9rem; border-radius: .5rem; }
+.skills-showcase .skill-item { margin-bottom: .9rem; }
+
+/* Portfolio card specifics */
+.portfolio-card .portfolio-image-container { border-radius: .5rem; overflow: hidden; }
+.portfolio-card .portfolio-meta { display:flex; align-items:center; justify-content:space-between; padding-top:.6rem; }
+
+/* Clear visual differences for headings vs paragraphs */
+.section-title h2 { margin-top:.25rem; margin-bottom:.5rem; }
+.section-title p { color: var(--muted); }
+
+/* Small responsive tweaks */
+@media (max-width: 768px) {
+	h1 { font-size: 2.25rem; }
+	.profile-card, .exp-card, .portfolio-card { padding: .85rem; }
+}
+
+/* Final accessibility check: ensure link focus is visible */
+
+a:focus { outline: 3px solid rgb(30, 129, 228); outline-offset: 3px; }
+
+/* === Custom list styles (ordered & unordered) === */
+/* Ordered list using CSS counters */
+.custom-ol {
+	counter-reset: section; /* start counter */
+	padding-left: 0; margin: 0 0 1rem 0; list-style: none;
+}
+.custom-ol > li {
+	counter-increment: section;
+	margin: 0 0 0.6rem 0; padding-left: 3.25rem; position: relative;
+	color: var(--text);
+}
+.custom-ol > li::before {
+	content: counter(section) ".";
+	position: absolute; left: 0; top: 0; font-weight: 700; color: var(--primary);
+	background: rgba(51, 42, 177, 0.418); padding: 0.18rem 0.5rem; border-radius: 0.35rem;
+}
+/* nested ordered list uses lowercase roman numerals for distinction */
+.custom-ol li ol { counter-reset: subsection; margin-top: .5rem; }
+.custom-ol li ol li { counter-increment: subsection; padding-left: 2.6rem; position: relative; }
+.custom-ol li ol li::before { content: lower-roman(subsection) ")"; position: absolute; left: 0; color: var(--accent); }
+
+/* Unordered list with pseudo-element bullets */
+.custom-ul { list-style: none; padding-left: 0; margin: 0 0 1rem 0; }
+.custom-ul li { position: relative; padding-left: 1.6rem; margin-bottom: .45rem; color: var(--text); }
+.custom-ul li::before { content: ""; position: absolute; left: 0.2rem; top: .6rem; width: .6rem; height: .6rem; background: var(--accent); border-radius: 2px; }
+.custom-ul li ul { margin-top: .5rem; padding-left: .8rem; }
+
+/* === Services table styles === */
+.services-pricing { margin-bottom: 1.25rem; }
+	.services-table { width: 100%; border-collapse: collapse; margin-top: .5rem; background: transparent; }
+	.services-table th, .services-table td { padding: .9rem; border: 1px solid rgba(255,255,255,0.06); vertical-align: middle; text-align: center; }
+	.services-table thead th { background: linear-gradient(90deg, #000000 0%, #8b0000 100%); color: #fff; font-weight: 700; letter-spacing: .01em; }
+	.services-table tbody tr:nth-child(odd) { background: #1a0b0b; }
+	.services-table tbody tr:nth-child(even) { background: #0b0b0b; }
+	.services-table tbody tr:hover { background: #b91c1c; }
+	.services-table td { color: #000000; }
+
+/* Small responsive tweak for table on narrow screens */
+@media (max-width: 576px) {
+	.services-table th, .services-table td { padding: .6rem; font-size: .95rem; }
+	.custom-ol > li::before { left: -0.25rem; }
+}
+
+/* End of added styles */
+
+/* =====================
+	 Animations & Preloader
+	 - Fade-in section
+	 - Social icon gentle movement
+	 - Decorative page preloader (CSS-only)
+	 - Reduced-motion handling
+	 ===================== */
+
+/* Fade-in for sections / blocks */
+.fade-in, .section.fade-in {
+	opacity: 0;
+	transform: translateY(10px) scale(0.995);
+	animation: fadeInSection 700ms cubic-bezier(.2,.9,.25,1) forwards;
+	will-change: transform, opacity;
+}
+
+@keyframes fadeInSection {
+	0% { opacity: 0; transform: translateY(10px) scale(0.995); }
+	60% { opacity: 1; transform: translateY(-3px) scale(1.002); }
+	100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Stagger helper for lists/children */
+.fade-in[data-stagger] > * { opacity: 0; transform: translateY(8px); animation: fadeInSection 700ms cubic-bezier(.2,.9,.25,1) forwards; }
+.fade-in[data-stagger] > *:nth-child(1){ animation-delay: 0.08s }
+.fade-in[data-stagger] > *:nth-child(2){ animation-delay: 0.16s }
+.fade-in[data-stagger] > *:nth-child(3){ animation-delay: 0.24s }
+.fade-in[data-stagger] > *:nth-child(4){ animation-delay: 0.32s }
+.fade-in[data-stagger] > *:nth-child(5){ animation-delay: 0.40s }
+
+/* Social icon subtle float / bounce for attention (apply to .social-icon) */
+.social-icon { display: inline-block; transform-origin: center; }
+.social-icon.float { animation: socialFloat 2200ms ease-in-out infinite; }
+
+@keyframes socialFloat {
+	0%   { transform: translateY(0) scale(1); }
+	25%  { transform: translateY(-4px) scale(1.02); }
+	50%  { transform: translateY(0) scale(1); }
+	75%  { transform: translateY(2px) scale(0.995); }
+	100% { transform: translateY(0) scale(1); }
+}
+
+/* Decorative page preloader - CSS only (non-blocking decorative element)
+	 Place the markup near the top of body. It is aria-hidden and non-interactive.
+	 It is intentionally decorative so it won't interfere with keyboard users. */
+.page-preloader.decorative { position: fixed; right: 22px; bottom: 22px; z-index: 9999; pointer-events: none; }
+.page-preloader .spinner, .page-preloader .pulsing-dots { display: inline-flex; align-items: center; justify-content: center; }
+
+/* Square spinner with 4 animated lines */
+.page-preloader .spinner {
+	width: 150px;
+	height: 50px;
+	position: fixed;
+	left: 18.5%;
+	top: 5%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.page-preloader .spinner::before,
+.page-preloader .spinner::after {
+	content: '';
+	position: absolute;
+	background: var(--accent);
+}
+
+/* Top line */
+.page-preloader .spinner::before {
+	width: 150px;
+	height: 4px;
+	top: 0;
+	animation: lineTop 1.2s ease-in-out infinite;
+}
+
+/* Right line */
+.page-preloader .spinner::after {
+	width: 4px;
+	height: 150px;
+	right: 0;
+	animation: lineRight 1.2s ease-in-out infinite 0.5s;
+}
+
+/* Bottom line (using child div via adjacent pseudo) */
+.page-preloader .spinner {
+	--line-color: var(--accent);
+}
+
+.page-preloader .spinner > * {
+	position: absolute;
+	background: var(--accent);
+}
+
+.page-preloader .spinner > *:nth-child(1) {
+	width: 50px;
+	height: 4px;
+	bottom: 0;
+	animation: lineBottom 1.2s ease-in-out infinite 2.5s;
+}
+
+.page-preloader .spinner > *:nth-child(2) {
+	width: 4px;
+	height: 50px;
+	left: 0;
+	animation: lineLeft 1.2s ease-in-out infinite 3s;
+}
+
+@keyframes lineTop {
+	0% { width: 0; left: 0; }
+	50% { width: 150px; left: 0; }
+	100% { width: 0; left: 150px; }
+}
+
+@keyframes lineRight {
+	0% { height: 0; top: 0; }
+	50% { height: 50px; top: 0; }
+	100% { height: 0; top: 50px; }
+}
+
+@keyframes lineBottom {
+	0% { width: 0; right: 0; }
+	50% { width: 150px; right: 0; }
+	100% { width: 0; right: 150px; }
+}
+
+@keyframes lineLeft {
+	0% { height: 0; bottom: 0; }
+	50% { height: 50px; bottom: 0; }
+	100% { height: 0; bottom: 50px; }
+}
+
+/* Pulsing dots variation */
+.page-preloader .pulsing-dots { gap: .5rem; }
+.page-preloader .pulsing-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); opacity: .9; transform-origin: center; animation: pulseDot 1.3s cubic-bezier(.2,.9,.25,1) infinite; }
+.page-preloader .pulsing-dots .dot:nth-child(2) { animation-delay: 0.16s }
+.page-preloader .pulsing-dots .dot:nth-child(3) { animation-delay: 0.32s }
+@keyframes pulseDot { 0%{ transform: scale(.85); opacity:.45 } 50%{ transform: scale(1.35); opacity:1 } 100%{ transform: scale(.85); opacity:.45 } }
+
+/* Simple accessible size reduction on very small screens */
+@media (max-width:480px){ .page-preloader .spinner{ width:36px; height:36px; border-width:3px } .page-preloader{ right: 12px; bottom: 12px } }
+
+/* =====================
+	 Reduced-motion accessibility
+	 - Turn off or simplify animations for users who prefer reduced motion
+	 ===================== */
+@media (prefers-reduced-motion: reduce) {
+	.fade-in, .fade-in[data-stagger] > *, .social-icon.float, .page-preloader .spinner, .page-preloader .pulsing-dots .dot {
+		animation: none !important;
+		transition: none !important;
+		transform: none !important;
+		opacity: 1 !important;
+	}
+	.page-preloader .spinner { border-top-color: var(--accent); transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.page-preloader.decorative {
+		display: none !important;
+	}
+}
+
+/* =====================
+	 Contact form specific styles
+	 - error states
+	 - results area
+	 - popup message
+	 - sliders
+	 ===================== */
+.contact-form .form-label { font-weight: 600; display: block; margin-bottom: .25rem; color: var(--text); }
+.contact-form .form-control { border: 1px solid rgba(15,23,35,0.08); padding: .6rem .75rem; border-radius: .4rem; background: #fff; color: var(--text); }
+.contact-form .form-control:focus { outline: 3px solid rgba(17,82,147,0.12); box-shadow: none; }
+.contact-form .error-text { color: #b91c1c; font-size: .875rem; margin-top: .25rem; min-height: 1.1rem; }
+.contact-form .form-control.invalid { border-color: #b91c1c; box-shadow: 0 4px 14px rgba(185,28,28,0.06); }
+.contact-form .btn[disabled] { opacity: .55; cursor: not-allowed; }
+
+.form-results { margin-top: 1rem; padding: .9rem; background: linear-gradient(180deg, rgba(17,82,147,0.03), rgba(17,82,147,0.01)); border-radius: .5rem; color: var(--text); border: 1px solid rgba(17,82,147,0.04); }
+.form-results p { margin: .25rem 0; }
+
+.popup-message { position: fixed; right: 20px; bottom: 100px; background: linear-gradient(180deg,var(--success), #059ea0); color: white; padding: .9rem 1rem; border-radius: .6rem; box-shadow: 0 8px 30px rgba(4,46,46,0.2); z-index: 10001; transform: translateY(8px); opacity: 0; pointer-events: none; transition: opacity .26s ease, transform .26s ease; }
+.popup-message.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+/* Slider display */
+.form-range { width: 100%; }
+.rating-group legend { font-weight: 700; margin-bottom: .5rem; }
+.slider-value { font-weight: 700; color: var(--primary); margin-left: .4rem; }
+
+/* Small screens form spacing */
+@media (max-width: 576px) {
+  .contact-form .form-control { font-size: .95rem; }
+  .popup-message { right: 12px; left: 12px; bottom: 16px; }
+}
+
+/* =====================
+   Services section: animated gradient background
+   ===================== */
+#services.section {
+	background: linear-gradient(-45deg, #115293, #ff6b35, #0ea5a4, #115293);
+	background-size: 400% 400%;
+	animation: gradientShift 8s ease infinite;
+	position: relative;
+}
+
+@keyframes gradientShift {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+/* =====================
+   About section: animated CSS shapes (rotating, scaling, floating)
+   ===================== */
+#about.section {
+	position: relative;
+	overflow: hidden;
+}
+
+/* Animated shape containers - position fixed with z-index behind content */
+.about-shape {
+	position: absolute;
+	pointer-events: none;
+	opacity: 0.08;
+}
+
+/* Triangle (rotates) */
+.about-shape.triangle {
+	width: 120px;
+	height: 120px;
+	top: 5%;
+	left: 8%;
+	animation: rotateCW 8s linear infinite;
+}
+.about-shape.triangle::before {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-left: 60px solid transparent;
+	border-right: 60px solid transparent;
+	border-bottom: 104px solid var(--primary);
+}
+
+/* Circle (pulsing) */
+.about-shape.circle {
+	width: 100px;
+	height: 100px;
+	top: 20%;
+	right: 10%;
+	border-radius: 50%;
+	background: var(--accent);
+	animation: pulseBig 3s ease-in-out infinite;
+}
+
+/* Square (floating up-down) */
+.about-shape.square {
+	width: 80px;
+	height: 80px;
+	bottom: 15%;
+	left: 5%;
+	background: var(--success);
+	animation: floatVertical 4s ease-in-out infinite;
+}
+
+/* Hexagon-like (scaling) */
+.about-shape.hexagon {
+	width: 90px;
+	height: 90px;
+	top: 60%;
+	right: 5%;
+	background: linear-gradient(60deg, var(--primary) 25%, transparent 25%) 10px 0,
+	            linear-gradient(120deg, var(--primary) 25%, transparent 25%) 10px 0,
+	            linear-gradient(60deg, var(--primary) 25%, transparent 25%) 0 10px,
+	            linear-gradient(120deg, var(--primary) 25%, transparent 25%) 0 10px,
+	            linear-gradient(60deg, var(--accent) 25%, transparent 25%),
+	            linear-gradient(120deg, var(--accent) 25%, transparent 25%);
+	background-repeat: repeat;
+	background-size: 20px 20px;
+	background-position: 0 0;
+	animation: scaleUp 3.5s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes rotateCW {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseBig {
+	0%, 100% { transform: scale(1); }
+	50% { transform: scale(1.3); }
+}
+
+@keyframes floatVertical {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-30px); }
+}
+
+@keyframes scaleUp {
+	0%, 100% { transform: scale(0.8); }
+	50% { transform: scale(1.2); }
+}
+
+/* Ensure shapes don't break layout on small screens */
+@media (max-width: 768px) {
+	.about-shape { opacity: 0.04; }
+	.about-shape.triangle { width: 80px; height: 80px; }
+	.about-shape.circle { width: 70px; height: 70px; }
+	.about-shape.square { width: 60px; height: 60px; }
+	.about-shape.hexagon { width: 70px; height: 70px; }
+}
+
+/* Reduced motion: disable all shape animations */
+@media (prefers-reduced-motion: reduce) {
+	#services.section { animation: none !important; }
+	.about-shape { animation: none !important; }
+}
+
+/* =====================
+	 Memory Game styles
+	 ===================== */
+.memory-game .game-controls { align-items: center; }
+.game-board-container { background: rgba(255,255,255,0.03); padding: 1rem; border-radius: .5rem; }
+.game-board { display: grid; gap: 12px; justify-content: center; align-content: start; }
+.game-board.easy { grid-template-columns: repeat(4, minmax(80px, 1fr)); }
+.game-board.hard { grid-template-columns: repeat(6, minmax(64px, 1fr)); }
+.game-card { perspective: 900px; }
+.card-inner { position: relative; width: 100%; padding-top: 100%; /* square */ transform-style: preserve-3d; transition: transform .45s cubic-bezier(.2,.9,.25,1); }
+.card-inner.flipped { transform: rotateY(180deg); }
+.card-face { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border-radius: .5rem; backface-visibility: hidden; font-size: 1.6rem; }
+.card-front { background: linear-gradient(180deg,#ffffff,#f1f5f9); color: #0b3b5a; border: 1px solid rgba(15,23,35,0.06); }
+.card-back { background: var(--primary); color: white; transform: rotateY(180deg); }
+.card-disabled { opacity: .5; pointer-events: none; }
+.game-stats { background: rgba(255,255,255,0.02); border-radius: .5rem; }
+.win-message { font-weight: 700; color: var(--success); }
+
+@media (max-width: 768px) {
+	.game-board.easy { grid-template-columns: repeat(3, minmax(80px, 1fr)); }
+	.game-board.hard { grid-template-columns: repeat(4, minmax(64px, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.card-inner { transition: none !important; }
+}
